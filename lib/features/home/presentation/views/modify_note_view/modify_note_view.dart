@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../view_models/add_notes/add_notes_cubit.dart';
 import 'widgets/modify_note_view_body.dart';
 
 class ModifyNoteView extends StatelessWidget {
@@ -7,8 +9,11 @@ class ModifyNoteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: ModifyNoteViewBody(),
+    return Scaffold(
+      body: BlocProvider<AddNoteCubit>(
+        create: (context) => AddNoteCubit(),
+        child: const ModifyNoteViewBody(),
+      ),
     );
   }
 }
