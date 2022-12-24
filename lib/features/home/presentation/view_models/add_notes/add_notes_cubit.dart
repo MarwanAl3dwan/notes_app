@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:notes_app/core/utils/constants.dart';
@@ -7,6 +8,13 @@ import 'add_notes_states.dart';
 
 class AddNoteCubit extends Cubit<AddNoteStates> {
   AddNoteCubit() : super(AddNoteInitialState());
+
+  String? noteData;
+  final FocusNode focusNode = FocusNode();
+
+  void initCubit() {
+    focusNode.requestFocus();
+  }
 
   Future<void> addNote(NoteModel note) async {
     emit(AddNoteLoadingState());
@@ -18,4 +26,5 @@ class AddNoteCubit extends Cubit<AddNoteStates> {
       emit(AddNoteErrorState(error.toString()));
     }
   }
+
 }

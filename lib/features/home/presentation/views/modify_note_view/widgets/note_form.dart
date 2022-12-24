@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../view_models/add_notes/add_notes_cubit.dart';
 
 class NoteForm extends StatefulWidget {
   const NoteForm({Key? key}) : super(key: key);
@@ -9,25 +11,26 @@ class NoteForm extends StatefulWidget {
 }
 
 class _NoteFormState extends State<NoteForm> {
-  final FocusNode focusNode = FocusNode();
-
   @override
   void initState() {
     super.initState();
-    focusNode.requestFocus();
+    BlocProvider.of<AddNoteCubit>(context).focusNode.requestFocus();
   }
 
   @override
   void dispose() {
     super.dispose();
-    focusNode.dispose();
+    BlocProvider.of<AddNoteCubit>(context).focusNode.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      focusNode: focusNode,
+      focusNode: BlocProvider.of<AddNoteCubit>(context).focusNode,
       maxLines: null,
+      onChanged: (value) {
+        BlocProvider.of<AddNoteCubit>(context).noteData = value;
+      },
       decoration: const InputDecoration(
         enabledBorder: InputBorder.none,
         focusedBorder: InputBorder.none,

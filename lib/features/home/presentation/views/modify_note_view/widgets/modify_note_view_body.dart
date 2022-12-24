@@ -29,11 +29,11 @@ class ModifyNoteViewBody extends StatelessWidget {
                   )
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const SizedBox(height: 40),
-                      ModifyNotesAppBar(icon: Icons.check, onTap: () {}),
-                      const SizedBox(height: 20),
-                      const NoteForm(),
+                    children: const [
+                      SizedBox(height: 40),
+                      ModifyNotesAppBar(icon: Icons.check),
+                      SizedBox(height: 20),
+                      NoteForm(),
                     ],
                   );
           },
