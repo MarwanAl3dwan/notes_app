@@ -12,11 +12,11 @@ class NotesViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: const [
-          SizedBox(height: 40),
-          NotesViewAppBar(),
-          SizedBox(height: 20),
-          Expanded(child: NotesListView()),
+        children: [
+          const SizedBox(height: 40),
+          CustomAppBar(title: 'Notes', icon: Icons.search, onTap: () {}),
+          const SizedBox(height: 20),
+          const Expanded(child: NotesListView()),
         ],
       ),
     );

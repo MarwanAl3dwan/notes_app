@@ -3,16 +3,19 @@ import 'package:notes_app/core/utils/theme.dart';
 
 import 'search_icon_button.dart';
 
-class NotesViewAppBar extends StatelessWidget {
-  const NotesViewAppBar({Key? key}) : super(key: key);
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({Key? key, required this.title, required this.icon, this.onTap}) : super(key: key);
+  final String title;
+  final IconData icon;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: const [
-        Text("Notes", style: CustomTextStyle.largeLight),
-        Spacer(),
-        SearchIconButton(),
+      children: [
+        const Text("Notes", style: CustomTextStyle.largeLight),
+        const Spacer(),
+        SearchIconButton(icon: icon, onTap: onTap),
       ],
     );
   }

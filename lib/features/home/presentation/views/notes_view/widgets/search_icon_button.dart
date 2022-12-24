@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class SearchIconButton extends StatelessWidget {
-  const SearchIconButton({Key? key}) : super(key: key);
+  const SearchIconButton({Key? key, required this.icon, this.onTap}) : super(key: key);
+  final IconData icon;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         height: 50,
         width: 50,
@@ -14,8 +16,8 @@ class SearchIconButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           color: Colors.white.withOpacity(0.05),
         ),
-        child: const Center(
-          child: Icon(Icons.search, size: 28),
+        child: Center(
+          child: Icon(icon, size: 28),
         ),
       ),
     );
