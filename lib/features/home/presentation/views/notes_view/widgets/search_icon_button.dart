@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SearchIconButton extends StatelessWidget {
-  const SearchIconButton({Key? key, required this.icon, this.onTap}) : super(key: key);
+class CustomIconButton extends StatelessWidget {
+  const CustomIconButton({Key? key, required this.icon, this.onTap}) : super(key: key);
   final IconData icon;
   final void Function()? onTap;
 

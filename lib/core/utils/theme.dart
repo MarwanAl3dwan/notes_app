@@ -38,6 +38,7 @@ abstract class CustomTextStyle {
 }
 
 abstract class CustomColors {
+  static const Color secondaryColor = Colors.yellowAccent;
   static const Color black = Colors.black;
   static const Color blackLight = Colors.black45;
 }

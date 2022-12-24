@@ -8,8 +8,7 @@ import '../../../view_models/add_notes/add_notes_cubit.dart';
 import '../../notes_view/widgets/search_icon_button.dart';
 
 class ModifyNotesAppBar extends StatelessWidget {
-  const ModifyNotesAppBar({Key? key, required this.icon})
-      : super(key: key);
+  const ModifyNotesAppBar({Key? key, required this.icon}) : super(key: key);
   final IconData icon;
 
   @override
@@ -25,15 +24,19 @@ class ModifyNotesAppBar extends StatelessWidget {
         const SizedBox(width: 6),
         const Text("Notes", style: CustomTextStyle.largeLight),
         const Spacer(),
-        SearchIconButton(
+        CustomIconButton(
           icon: icon,
           onTap: () {
-            NoteModel note = NoteModel(
-              noteData: BlocProvider.of<AddNoteCubit>(context).noteData!,
-              date: DateTime.now().toString(),
-              color: Colors.yellow.value,
-            );
-            BlocProvider.of<AddNoteCubit>(context).addNote(note);
+            if (BlocProvider.of<AddNoteCubit>(context).noteData == null) {
+              Get.back();
+            } else {
+              NoteModel note = NoteModel(
+                noteData: BlocProvider.of<AddNoteCubit>(context).noteData!,
+                date: DateTime.now().toString(),
+                color: Colors.yellow.value,
+              );
+              BlocProvider.of<AddNoteCubit>(context).addNote(note);
+            }
           },
         ),
       ],

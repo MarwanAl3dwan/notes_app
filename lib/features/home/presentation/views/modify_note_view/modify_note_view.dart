@@ -11,7 +11,7 @@ class ModifyNoteView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider<AddNoteCubit>(
-        create: (context) => AddNoteCubit(),
+        create: (context) => AddNoteCubit()..initCubit(),
         child: const ModifyNoteViewBody(),
       ),
     );

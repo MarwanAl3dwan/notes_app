@@ -15,7 +15,7 @@ class CustomAppBar extends StatelessWidget {
       children: [
         const Text("Notes", style: CustomTextStyle.largeLight),
         const Spacer(),
-        SearchIconButton(icon: icon, onTap: onTap),
+        CustomIconButton(icon: icon, onTap: onTap),
       ],
     );
   }

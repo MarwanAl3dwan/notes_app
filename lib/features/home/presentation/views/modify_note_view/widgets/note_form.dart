@@ -12,18 +12,6 @@ class NoteForm extends StatefulWidget {
 
 class _NoteFormState extends State<NoteForm> {
   @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<AddNoteCubit>(context).focusNode.requestFocus();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    BlocProvider.of<AddNoteCubit>(context).focusNode.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return TextFormField(
       focusNode: BlocProvider.of<AddNoteCubit>(context).focusNode,
