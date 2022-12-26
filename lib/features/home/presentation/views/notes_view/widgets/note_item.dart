@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:notes_app/features/home/data/note_model.dart';
 import 'package:notes_app/features/home/presentation/views/modify_note_view/modify_note_view.dart';
 
 import '../../../../../../core/utils/theme.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({Key? key}) : super(key: key);
+  const NoteItem({Key? key, required this.note}) : super(key: key);
+
+  final NoteModel note;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class NoteItem extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: const Color(0xffFFCC80),
+          color: Color(note.color),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -26,13 +29,17 @@ class NoteItem extends StatelessWidget {
           children: [
             ListTile(
               contentPadding: const EdgeInsets.all(0),
-              title:
-                  const Text("Flutter tips", style: CustomTextStyle.largeDark),
-              subtitle: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 20),
+              title: Text(
+                note.noteData,
+                style: CustomTextStyle.largeDark,
+                overflow: TextOverflow.ellipsis,
+              ),
+              subtitle: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Text(
-                  "build your career with marwan aladwan",
+                  note.noteData,
                   style: CustomTextStyle.mediumSemiLight,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
               trailing: IconButton(
@@ -42,7 +49,7 @@ class NoteItem extends StatelessWidget {
                     color: CustomColors.black,
                   )),
             ),
-            const Text("May 21.2022", style: CustomTextStyle.smallSemiLight),
+            Text(note.date, style: CustomTextStyle.smallSemiLight),
           ],
         ),
       ),

@@ -7,15 +7,10 @@ import 'package:notes_app/features/home/presentation/view_models/notes/notes_sta
 class NotesCubit extends Cubit<NotesStates> {
   NotesCubit() : super(NotesInitialState());
 
+  List<NoteModel>? notes;
+
   void fetchAllNotes() {
-    emit(NotesLoadingState());
-    try {
-      Box<NoteModel> noteBox = Hive.box<NoteModel>(kNotesBox);
-      List<NoteModel> notes = noteBox.values.toList();
-      emit(NotesSuccessState(notes));
-    } catch (error) {
-      print(error);
-      emit(NotesErrorState(error.toString()));
-    }
+    Box<NoteModel> noteBox = Hive.box<NoteModel>(kNotesBox);
+    notes = noteBox.values.toList();
   }
 }
